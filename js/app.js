@@ -12,6 +12,10 @@
 *  Email: stevermasteller@gmail.com
 *
 ************************************************************/
+/* globals $ */			// define $ as a global for jsHint
+
+(function(){
+"use strict";
 
 var omdbAPI = "http://www.omdbapi.com/?";	// address to ombd API
 
@@ -39,7 +43,7 @@ $('form').submit( function(event) {
 // setup and call the omdb API for a movie search by title and year 
 var callMovieSearch = function () {
 	
-	omdbOptions = {
+	var omdbOptions = {
 		s: searchTitle,		// title to search by
 		type: "movie",		// search only for movies
 		y: searchYear,		// year to search by
@@ -69,7 +73,7 @@ var displayMovies = function (results) {
 			
 			// if there is no movie poster display a placeholder, else display movie poster
 			if (movie.Poster === 'N/A') {
-				moviesHTML += '<i class="material-icons poster-placeholder">crop_original</i>'
+				moviesHTML += '<i class="material-icons poster-placeholder">crop_original</i>';
 			} else {
 				moviesHTML += '<img class="movie-poster" src="' + movie.Poster + '">';
 			}
@@ -89,7 +93,7 @@ var displayMovies = function (results) {
 	
 	// attach moviesHTML to document in the correct place
 	$('#movies').html(moviesHTML);	 
-}
+};
 
 // Event handler for poster clicks. When a poster is clicked get a movie description and display it.
 $(document).on('click', 'div.poster-wrap', function() {
@@ -103,7 +107,7 @@ $(document).on('click', 'div.poster-wrap', function() {
 // setup and call the ombd API to get a movie plot and ombd rating for a particular movie and year
 var callMovieDescription = function () {
 	
-	omdbOptions = {
+	var omdbOptions = {
 		t: thisSearchTitle,		// title movie poster clicked
 		type: "movie",			// get only movie info
 		y: thisSearchYear,		// year of movie poster clicked
@@ -142,7 +146,7 @@ var displayDescription = function (results) {
 	
 	// if there is no movie poster display a placeholder, else display movie poster
 	if (results.Poster === 'N/A') {
-		movieHTML +=   '<i class="material-icons poster-placeholder">crop_original</i>'
+		movieHTML +=   '<i class="material-icons poster-placeholder">crop_original</i>';
 	} else {
 		movieHTML +=   '<img class="movie-poster" src="' + results.Poster + '">';
 	}
@@ -150,7 +154,7 @@ var displayDescription = function (results) {
 	movieHTML +=     '</div>';
 	movieHTML +=     '<div class="inner3">';
 	movieHTML +=       '<h1 class="movie-synopsis">Plot Synopsis:</h1>';
-	movieHTML +=       '<p>' + results.Plot + '</p>'	// display the full plot
+	movieHTML +=       '<p>' + results.Plot + '</p>';	// display the full plot
 	// link to imdb page for a particular title
 	movieHTML +=       '<a href="http://www.imdb.com/title/' + results.imdbID + '"><button id="IMDB-button">View on IMDB</button></a>';	
 	movieHTML +=     '</div>';
@@ -160,4 +164,6 @@ var displayDescription = function (results) {
 	
 	// attach movieHTML to document in the correct place
 	$('div.main-description').html(movieHTML);
-}
+};
+
+})();
