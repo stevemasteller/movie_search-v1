@@ -1,15 +1,16 @@
 
 var omdbAPI = "http://www.omdbapi.com/?";
-var searchVal;
+var searchTitle;
 
 $('form').submit( function(event) {
 	event.preventDefault();
 	
-	searchVal = $('#search').val();
-	alert(searchVal);
+	searchTitle = $('#search').val();
+	searchYear = $('#year').val();
 	
 	omdbOptions = {
-		s: searchVal,
+		s: searchTitle,
+		y: searchYear,
 		r: "json"
 	};
 
@@ -21,15 +22,9 @@ var displayMovies = function (results) {
 	 
 	var moviesHTML = '';
 	 
-	if (results.Response) {
+	if (results.Response === "True") {
 		 
 		$.each(results.Search, function (i, movie) {
-			
-			if (movie.Poster === 'N/A') {
-				
-			} else {
-				moviePoster = movie.Poster;
-			}
 			
 			moviesHTML += '<li>';
 			moviesHTML += '<div class="poster-wrap">';
@@ -50,7 +45,7 @@ var displayMovies = function (results) {
 	} else {
 		
 		moviesHTML += "<li class='no-movies'>";
-		moviesHTML += "<i class='material-icons icon-help'>help_outline</i>No movies found that match: .";
+		moviesHTML += "<i class='material-icons icon-help'>help_outline</i>No movies found that match: " + searchVal + ".";
 		moviesHTML += "</li>"; 
 	}
 	
