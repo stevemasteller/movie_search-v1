@@ -1,6 +1,7 @@
 
 var omdbAPI = "http://www.omdbapi.com/?";
 var searchTitle;
+var searchYear;
 
 $('form').submit( function(event) {
 	event.preventDefault();
@@ -26,7 +27,7 @@ var displayMovies = function (results) {
 		 
 		$.each(results.Search, function (i, movie) {
 			
-			moviesHTML += '<li>';
+			moviesHTML += '<li><a href="http://www.imdb.com/title/' + movie.imdbID + '">';
 			moviesHTML += '<div class="poster-wrap">';
 			
 			
@@ -39,13 +40,13 @@ var displayMovies = function (results) {
 			moviesHTML += '</div>';
 			moviesHTML += '<span class="movie-title">' + movie.Title + '</span>';
 			moviesHTML += '<span class="movie-year">' + movie.Year + '</span>';
-			moviesHTML += '</li>';
+			moviesHTML += '</a></li>';
 		});
 		
 	} else {
 		
 		moviesHTML += "<li class='no-movies'>";
-		moviesHTML += "<i class='material-icons icon-help'>help_outline</i>No movies found that match: " + searchVal + ".";
+		moviesHTML += "<i class='material-icons icon-help'>help_outline</i>No movies found that match: " + searchTitle + ".";
 		moviesHTML += "</li>"; 
 	}
 	
