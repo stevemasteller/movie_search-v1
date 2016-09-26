@@ -5,11 +5,21 @@ var searchYear;
 var thisSearchTitle;
 var thisSearchYear;
 
+$(document).on('click', 'div #index-link', function() {
+	
+	callMovieSearch();
+});
+
 $('form').submit( function(event) {
 	event.preventDefault();
 	
 	searchTitle = $('#search').val();
 	searchYear = $('#year').val();
+	
+	callMovieSearch();
+});
+
+var callMovieSearch = function () {
 	
 	omdbOptions = {
 		s: searchTitle,
@@ -19,7 +29,7 @@ $('form').submit( function(event) {
 	};
 
 	$.getJSON(omdbAPI, omdbOptions, displayMovies);
-});
+};
  
 
 var displayMovies = function (results) {
@@ -64,6 +74,11 @@ $(document).on('click', 'div.poster-wrap', function() {
 	thisSearchTitle = $(this).next('.movie-title').text();
 	thisSearchYear  = $(this).next('.movie-title').next('.movie-year').text();
 	
+	callMovieDescription();
+});
+
+var callMovieDescription = function () {
+	
 	omdbOptions = {
 		t: thisSearchTitle,
 		type: "movie",
@@ -73,7 +88,7 @@ $(document).on('click', 'div.poster-wrap', function() {
 	};
 
 	$.getJSON(omdbAPI, omdbOptions, displayDescription);
-});
+};
 
 var displayDescription = function (results) {
 	
@@ -86,7 +101,7 @@ var displayDescription = function (results) {
 	movieHTML += '<div id="grey-bar">';
 	movieHTML +=   '<div class="inner2">';
     movieHTML +=     '<div id="index-link">';
-	movieHTML +=       '<a href="index.html"><  </a><span>Search results</span>';
+	movieHTML +=       '<span id="link"><  </span><span id="search-results">Search results</span>';
 	movieHTML +=     '</div>';
     movieHTML +=     '<div class="inner3">';
 	movieHTML +=       '<h1 class="movie-title">' + results.Title + ' (' + results.Year + ')</h1>';

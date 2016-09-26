@@ -132,13 +132,14 @@ button {
   position: absolute;
   top: 1.5em;
   left: 0;
+  cursor: pointer;
 }
 
-.main-description #index-link span {
+.main-description #index-link #search-results {
   color: #adadad;
 }
 
-.main-description #index-link a {
+.main-description #index-link #link {
   color: #f6f7f7;
 }
 /* MOVIE LIST COMPONENTS -------- */
@@ -198,6 +199,7 @@ button {
   bottom: 5%;
   left: 16.5%;
   width: 23%;
+  height: 70%;
   background-color: #f6f7f7;
   border: 10px solid #f6f7f7;
 }
