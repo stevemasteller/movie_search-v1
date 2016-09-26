@@ -37,10 +37,10 @@ var displayMovies = function (results) {
 				moviesHTML += '<img class="movie-poster" src="' + movie.Poster + '">';
 			}
 			
-			moviesHTML += '</div>';
+			moviesHTML += '</div></a>';
 			moviesHTML += '<span class="movie-title">' + movie.Title + '</span>';
 			moviesHTML += '<span class="movie-year">' + movie.Year + '</span>';
-			moviesHTML += '</a></li>';
+			moviesHTML += '</li>';
 		});
 		
 	} else {
