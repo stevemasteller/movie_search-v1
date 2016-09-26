@@ -56,6 +56,20 @@ button {
   z-index: 2000;
 }
 
+.main-description #IMDB-button {
+  line-height: 20px;
+  font-weight: 700;
+  width: 100px;
+  border: 0;
+  border-radius: 3px;
+  color: #f6f7f7;
+  margin-top: 1em;
+  background-color: #37d6b2;
+  cursor: pointer;
+  outline: 0;
+  z-index: 2000;
+}
+
 /* ================================= 
   Page Components
 ==================================== */
@@ -98,6 +112,35 @@ button {
   display: block;
 }
 
+/* GREY BAR COMPONENTS ---------- */
+.main-description #grey-bar {
+  background-color: #4b4b4b;
+  min-height: 30vh;
+  color: #adadad;
+}
+
+.main-description .movie-title {
+  padding-top: 3.8em;
+  font-size: 2em;
+  line-height: 40px;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #f6f7f7;
+}
+
+.main-description #index-link {
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+}
+
+.main-description #index-link span {
+  color: #adadad;
+}
+
+.main-description #index-link a {
+  color: #f6f7f7;
+}
 /* MOVIE LIST COMPONENTS -------- */
 
 .no-movies  {
@@ -148,6 +191,21 @@ button {
   margin: auto;
 }
 
+/* MOVIE Description -------------- */
+
+.main-description .movie-poster {
+  position: fixed;
+  bottom: 5%;
+  left: 16.5%;
+  width: 23%;
+  border: 10px solid #f6f7f7;
+}
+
+.main-description .movie-synopsis {
+  font-size: 1.2em;
+  padding-top: 1.2em;
+}
+
 /* ================================= 
   Layout Styles
 ==================================== */
@@ -157,10 +215,23 @@ button {
 }
 
 .inner,
+.main-description .inner2,
+.main-description .inner4,
 .main-content {
   width: 90%;
   max-width: 1025px;
   margin: auto;
+}
+
+.main-description .inner2,
+.main-description .inner4 {
+	position: relative;
+}
+
+.main-description .inner3 {
+  width: 60%;
+  margin-right: 0;
+  float: right;
 }
 
 .main-header {
@@ -215,20 +286,20 @@ button {
     width: 100%;
   }
 
-  .poster-wrap {
+  .main-content .poster-wrap {
     height: 290px;
     border: 1px solid white;
     overflow: hidden;
   }
 
-  .movie-poster {
+  .main-content .movie-poster {
     width: 100%;
     min-height: 100%;
     -webkit-transition: -webkit-transform .4s ease-out;
     transition: transform .4s ease-out;
   }
 
-  .poster-wrap:hover .movie-poster {
+  .main-content .poster-wrap:hover .movie-poster {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
