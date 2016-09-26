@@ -193,12 +193,18 @@ button {
 
 /* MOVIE Description -------------- */
 
-.main-description .movie-poster {
+.main-description .poster-wrapper {
   position: fixed;
   bottom: 5%;
   left: 16.5%;
   width: 23%;
+  height: 70%;
+  background-color: #f6f7f7;
   border: 10px solid #f6f7f7;
+}
+
+.main-description .movie-poster {
+	width: 100%;
 }
 
 .main-description .movie-synopsis {
