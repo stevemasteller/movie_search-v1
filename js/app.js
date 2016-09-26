@@ -22,6 +22,9 @@ $('form').submit( function(event) {
 var displayMovies = function (results) {
 	 
 	var moviesHTML = '';
+	
+	$('div.main-description').hide();
+	$('div.main-content').show();
 	 
 	if (results.Response === "True") {
 		 
@@ -72,4 +75,6 @@ $(document).on('click', 'div.poster-wrap', function() {
 
 var displayDescription = function (results) {
 	
+	$('div.main-content').hide();
+	$('div.main-description').show();
 }

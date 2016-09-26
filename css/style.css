@@ -152,6 +152,10 @@ button {
   Layout Styles
 ==================================== */
 
+.main-description {
+	display: none;
+}
+
 .inner,
 .main-content {
   width: 90%;
