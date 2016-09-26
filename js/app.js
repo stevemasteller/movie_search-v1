@@ -27,7 +27,7 @@ var displayMovies = function (results) {
 		 
 		$.each(results.Search, function (i, movie) {
 			
-			moviesHTML += '<li><a href="http://www.imdb.com/title/' + movie.imdbID + '">';
+			moviesHTML += '<li>';
 			moviesHTML += '<div class="poster-wrap">';
 			
 			
@@ -37,7 +37,7 @@ var displayMovies = function (results) {
 				moviesHTML += '<img class="movie-poster" src="' + movie.Poster + '">';
 			}
 			
-			moviesHTML += '</div></a>';
+			moviesHTML += '</div>';
 			moviesHTML += '<span class="movie-title">' + movie.Title + '</span>';
 			moviesHTML += '<span class="movie-year">' + movie.Year + '</span>';
 			moviesHTML += '</li>';
@@ -51,4 +51,25 @@ var displayMovies = function (results) {
 	}
 	
 	$('#movies').html(moviesHTML);	 
+}
+
+$(document).on('click', 'div.poster-wrap', function() {
+	
+	searchTitle = $(this).next('.movie-title').text();
+	searchYear  = $(this).next('.movie-title').next('.movie-year').text();
+	
+	alert(searchTitle + searchYear);
+	
+	omdbOptions = {
+		t: searchTitle,
+		y: searchYear,
+		plot: "full",
+		r: "json"
+	};
+
+	$.getJSON(omdbAPI, omdbOptions, displayDescription);
+});
+
+var displayDescription = function (results) {
+	
 }
