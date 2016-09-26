@@ -2,6 +2,8 @@
 var omdbAPI = "http://www.omdbapi.com/?";
 var searchTitle;
 var searchYear;
+var thisSearchTitle;
+var thisSearchYear;
 
 $('form').submit( function(event) {
 	event.preventDefault();
@@ -11,6 +13,7 @@ $('form').submit( function(event) {
 	
 	omdbOptions = {
 		s: searchTitle,
+		type: "movie",
 		y: searchYear,
 		r: "json"
 	};
@@ -61,10 +64,9 @@ $(document).on('click', 'div.poster-wrap', function() {
 	thisSearchTitle = $(this).next('.movie-title').text();
 	thisSearchYear  = $(this).next('.movie-title').next('.movie-year').text();
 	
-	alert(thisSearchTitle + thisSearchYear);
-	
 	omdbOptions = {
 		t: thisSearchTitle,
+		type: "movie",
 		y: thisSearchYear,
 		plot: "full",
 		r: "json"
